@@ -9,11 +9,11 @@ namespace NinjectExample1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             StandardKernel kernel = new StandardKernel();
             kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
-
+            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>();
 
             IValueCalculator valueCalc = kernel.Get<IValueCalculator>();
             ShoppingCart cart = new ShoppingCart(valueCalc);

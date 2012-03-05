@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultDiscountHelper.cs" />
+    <Compile Include="IDiscountHelper.cs" />
     <Compile Include="IValueCalculator.cs" />
     <Compile Include="LinqValueCalculator.cs" />
     <Compile Include="Product.cs" />
