@@ -7,9 +7,11 @@ namespace NinjectExample1
 {
     public class DefaultDiscountHelper : IDiscountHelper
     {
+        public decimal DiscountSize { get; set; }
+
         public decimal ApplyDiscount(decimal totalParam)
         {
-            return (totalParam - (20m / 100m * totalParam));
+            return (totalParam - (this.DiscountSize / 100m * totalParam));
         }
     }
 }

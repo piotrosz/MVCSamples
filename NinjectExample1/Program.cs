@@ -13,7 +13,7 @@ namespace NinjectExample1
         {
             StandardKernel kernel = new StandardKernel();
             kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
-            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>();
+            kernel.Bind<IDiscountHelper>().To<DefaultDiscountHelper>().WithPropertyValue("DiscountSize", 50m);
 
             IValueCalculator valueCalc = kernel.Get<IValueCalculator>();
             ShoppingCart cart = new ShoppingCart(valueCalc);
