@@ -5,6 +5,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ninject", "Ninject", "{C88A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjectExample1", "NinjectExample1\NinjectExample1.csproj", "{1894AC7F-326F-4CFC-9E1E-55C47736AF2D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeItEasy", "FakeItEasy", "{EA22B92D-D6CF-47A0-AB7D-3D00AF01A56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeItEasyExample1", "FakeItEasyExample1\FakeItEasyExample1.csproj", "{67C42407-EF44-45F1-B6BF-9C5F6AE46114}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjectExample2", "NinjectExample2\NinjectExample2.csproj", "{B75BD4A3-1038-4FE8-A5A0-57E4B71F326D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeItEasyExample2", "FakeItEasyExample2\FakeItEasyExample2.csproj", "{4C39231D-D466-47FF-A46A-58B199D3BBB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,11 +23,26 @@ Global
 		{1894AC7F-326F-4CFC-9E1E-55C47736AF2D}.Debug|x86.Build.0 = Debug|x86
 		{1894AC7F-326F-4CFC-9E1E-55C47736AF2D}.Release|x86.ActiveCfg = Release|x86
 		{1894AC7F-326F-4CFC-9E1E-55C47736AF2D}.Release|x86.Build.0 = Release|x86
+		{67C42407-EF44-45F1-B6BF-9C5F6AE46114}.Debug|x86.ActiveCfg = Debug|x86
+		{67C42407-EF44-45F1-B6BF-9C5F6AE46114}.Debug|x86.Build.0 = Debug|x86
+		{67C42407-EF44-45F1-B6BF-9C5F6AE46114}.Release|x86.ActiveCfg = Release|x86
+		{67C42407-EF44-45F1-B6BF-9C5F6AE46114}.Release|x86.Build.0 = Release|x86
+		{B75BD4A3-1038-4FE8-A5A0-57E4B71F326D}.Debug|x86.ActiveCfg = Debug|x86
+		{B75BD4A3-1038-4FE8-A5A0-57E4B71F326D}.Debug|x86.Build.0 = Debug|x86
+		{B75BD4A3-1038-4FE8-A5A0-57E4B71F326D}.Release|x86.ActiveCfg = Release|x86
+		{B75BD4A3-1038-4FE8-A5A0-57E4B71F326D}.Release|x86.Build.0 = Release|x86
+		{4C39231D-D466-47FF-A46A-58B199D3BBB5}.Debug|x86.ActiveCfg = Debug|x86
+		{4C39231D-D466-47FF-A46A-58B199D3BBB5}.Debug|x86.Build.0 = Debug|x86
+		{4C39231D-D466-47FF-A46A-58B199D3BBB5}.Release|x86.ActiveCfg = Release|x86
+		{4C39231D-D466-47FF-A46A-58B199D3BBB5}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1894AC7F-326F-4CFC-9E1E-55C47736AF2D} = {C88A8E6D-EB04-47BB-B592-A86477F1834E}
+		{B75BD4A3-1038-4FE8-A5A0-57E4B71F326D} = {C88A8E6D-EB04-47BB-B592-A86477F1834E}
+		{67C42407-EF44-45F1-B6BF-9C5F6AE46114} = {EA22B92D-D6CF-47A0-AB7D-3D00AF01A56D}
+		{4C39231D-D466-47FF-A46A-58B199D3BBB5} = {EA22B92D-D6CF-47A0-AB7D-3D00AF01A56D}
 	EndGlobalSection
 EndGlobal
