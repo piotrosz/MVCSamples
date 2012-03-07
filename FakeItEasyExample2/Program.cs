@@ -11,26 +11,23 @@ namespace FakeItEasyExample2
         // based on
         // http://msdn.microsoft.com/en-us/magazine/cc163904.aspx
 
-        class Program
+        static void Main()
         {
-            static void Main()
-            {
-                IShoppingDataAccess fakeDataAccess = A.Fake<IShoppingDataAccess>();
+            IShoppingDataAccess fakeDataAccess = A.Fake<IShoppingDataAccess>();
 
-                Basket basket = new Basket(fakeDataAccess);
-                basket.Save();
+            Basket basket = new Basket(fakeDataAccess);
+            basket.Save();
 
-                A.CallTo(() => fakeDataAccess.GetUnitPrice(99)).Returns(120);
-                A.CallTo(() => fakeDataAccess.GetProductName(A<int>.Ignored)).Returns("Always banana");
+            A.CallTo(() => fakeDataAccess.GetUnitPrice(99)).Returns(120);
+            A.CallTo(() => fakeDataAccess.GetProductName(A<int>.Ignored)).Returns("Always banana");
 
-                BasketItem basketItem = new BasketItem(99, 3, fakeDataAccess);
+            BasketItem basketItem = new BasketItem(99, 3, fakeDataAccess);
 
-                // Assertion
-                A.CallTo(() => fakeDataAccess.GetProductName(99)).MustHaveHappened();
+            // Assertion
+            A.CallTo(() => fakeDataAccess.GetProductName(99)).MustHaveHappened();
 
-                Console.WriteLine(basketItem.Price);
-                Console.WriteLine(basketItem.ProductName);
-            }
+            Console.WriteLine(basketItem.Price);
+            Console.WriteLine(basketItem.ProductName);
         }
     }
 }

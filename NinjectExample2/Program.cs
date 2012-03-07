@@ -23,6 +23,10 @@ namespace NinjectExample2
 
             // Conditional binding
 
+            //kernel.Bind<IValueCalculator>().To<LinqValueCalculator>();
+            //kernel.Bind<IValueCalculator>()
+            //    .To<IterativeValueCalculator>()
+            //    .WhenInjectedInto<LimitShoppingCart>();
 
         }
     }
