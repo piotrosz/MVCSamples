@@ -1,0 +1,21 @@
+﻿@model MvcModelBinding.Models.Person
+@using MvcModelBinding.Models
+
+@{ ViewBag.Title = "Index"; }
+
+<h2>Person</h2>
+
+@{
+    Person myPerson = new Person() 
+    {
+        FirstName = "Jane", 
+        LastName = "Doe"
+    };
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.EditorFor(m => myPerson)
+    @Html.EditorForModel()
+    <input type="submit" value="Submit" />
+}

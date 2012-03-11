@@ -1,0 +1,41 @@
+﻿@model MvcModelValidation.Models.Appointment
+
+@{ 
+    Layout = "~/Views/Shared/_Layout.cshtml";
+ }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Make A Booking</title>
+</head>
+<body>
+    <div>
+        <h4>Book an Appointment</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            
+            <p>
+                Your name: 
+                @Html.EditorFor(m => m.ClientName)
+                @Html.ValidationMessageFor(m => m.ClientName)
+            </p>
+            
+            <p>
+                Appointment Date: 
+                @Html.EditorFor(m => m.Date)
+                @Html.ValidationMessageFor(m => m.Date)
+            </p>
+            
+            <p>
+                @Html.EditorFor(m => m.TermsAccepted) I accept the terms & conditions
+                @Html.ValidationMessageFor(m => m.TermsAccepted)
+            </p>
+    
+            <input type="submit" value="Make Booking" />
+        }
+    </div>
+</body>
+</html>

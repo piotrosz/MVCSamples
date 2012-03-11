@@ -1,0 +1,14 @@
+﻿@model List<MvcModelBinding.Models.Person>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@using (Html.BeginForm())
+{
+    Html.RenderPartial("PersonPartial", Model);
+    
+    <input type="submit" value="Submit" />
+}

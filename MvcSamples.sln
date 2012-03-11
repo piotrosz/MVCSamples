@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcControllersAndActionReul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcFilters", "MvcFilters\MvcFilters.csproj", "{291580B6-6783-4A92-BA64-A5268DBDE0A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcModelBinding", "MvcModelBinding\MvcModelBinding.csproj", "{D2F3368A-CDC3-4E44-8B99-2B4C49346259}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -163,6 +165,16 @@ Global
 		{291580B6-6783-4A92-BA64-A5268DBDE0A5}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{291580B6-6783-4A92-BA64-A5268DBDE0A5}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{291580B6-6783-4A92-BA64-A5268DBDE0A5}.Release|x86.ActiveCfg = Release|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -179,6 +191,7 @@ Global
 		{F82E8EAC-6741-42D6-BFE1-279C603C6967} = {45353EC1-07C2-403F-917D-94EB2530229F}
 		{9F621237-31A9-41E3-8D5A-588CF3D48307} = {45353EC1-07C2-403F-917D-94EB2530229F}
 		{291580B6-6783-4A92-BA64-A5268DBDE0A5} = {45353EC1-07C2-403F-917D-94EB2530229F}
+		{D2F3368A-CDC3-4E44-8B99-2B4C49346259} = {45353EC1-07C2-403F-917D-94EB2530229F}
 		{3CBD398E-992B-46AC-8596-6939F185DE10} = {3F3DFF78-9CB3-4E37-BA05-05D7CBCD3CFD}
 	EndGlobalSection
 EndGlobal

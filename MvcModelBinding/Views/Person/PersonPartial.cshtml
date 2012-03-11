@@ -1,0 +1,25 @@
+﻿@model List<MvcModelBinding.Models.Person>
+
+@for (int i = 0; i < Model.Count(); i++)
+{   
+    <h4>Person number @i</h4>
+    
+    <b>First Name:</b> 
+
+    @Html.EditorFor(m => m[i].FirstName)
+    @Html.ValidationMessageFor(m => m[i].FirstName)
+    
+    <b>Last Name:</b> 
+
+    @Html.EditorFor(m => m[i].LastName)
+    @Html.ValidationMessageFor(m => m[i].LastName)
+
+    <b>Role:</b>
+
+    @Html.DropDownListFor(m => m[i].Letter, new SelectList(Model[i].Letters))
+    @Html.ValidationMessageFor(m => m[i].Letter)
+}
+
+
+
+
