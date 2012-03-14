@@ -1,0 +1,10 @@
+﻿@inherits MvcViewsInjection.Views.Models.ViewClasses.CalculatorView
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    The calculation result for @ViewBag.X and @ViewBag.Y is @Calculator.Sum(ViewBag.X, ViewBag.Y)
+</p>

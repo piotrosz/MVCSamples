@@ -1,0 +1,13 @@
+﻿@model MvcTemplatedViewHelpers.Models.Role
+
+@foreach (MvcTemplatedViewHelpers.Models.Role value in Enum.GetValues(typeof(MvcTemplatedViewHelpers.Models.Role)))
+{
+    if (value == Model)
+    {
+        <b>@value</b>
+    }
+    else
+    {
+        @value
+    }
+}

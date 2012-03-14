@@ -1,0 +1,72 @@
+﻿@model MvcTemplatedViewHelpers.Models.Person
+
+@{
+    ViewBag.Title = "Person";
+}
+
+<h2>Person</h2>
+
+<hr />
+<p>Editor:</p>
+
+<div class="field">
+    <label>Name:</label>
+    @Html.EditorFor(x => x.FirstName)
+    @Html.EditorFor(x => x.LastName)
+</div>
+
+<div class="field">
+    <label>Approved:</label>
+    @Html.EditorFor(x => x.IsApproved)
+</div>
+
+<div class="field">
+    <label>Role:</label>
+    @Html.EditorFor(m => m.Role)
+</div>
+
+<hr />
+<p>Display:</p>
+
+<div class="field">
+    <label>Name:</label>
+    @Html.DisplayFor(x => x.FirstName)
+    @Html.DisplayFor(x => x.LastName)
+</div>
+
+<div class="field">
+    <label>Approved:</label>
+    @Html.DisplayFor(x => x.IsApproved)
+</div>
+
+<div class="field">
+    <label>Role:</label>
+    @Html.DisplayFor(m => m.Role)
+</div>
+
+<hr />
+<p>EditorForModel</p>
+
+@Html.EditorForModel()
+
+<hr />
+<p>LabelForModel</p>
+
+@Html.LabelForModel();
+
+<hr />
+<p>EditorForModel and Address</p>
+
+<div class="column">
+    @Html.EditorForModel()
+</div>
+<div class="column">
+    @Html.EditorFor(m => m.HomeAddress)
+</div>
+
+<hr />
+<p>DisplayForModel</p>
+
+@Html.DisplayForModel()
+
+
