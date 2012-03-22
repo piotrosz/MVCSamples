@@ -1,0 +1,20 @@
+﻿@model MvcPagedGrid.Models.NotesListViewModel
+@using MvcPagedGrid.HtmlHelpers
+
+@{
+    ViewBag.Title = "Notes";
+}
+
+@foreach (var n in Model.Notes)
+{
+    <div class"item">
+        <h4>@n.Id</h4>
+        <p>@n.Content</p>
+        <p>@string.Join(", ", n.Categories.Select(x => x.Name).ToArray())</p>
+    </div>
+}
+
+<div class="pager">
+@Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new { page = x })) 
+</div>
+

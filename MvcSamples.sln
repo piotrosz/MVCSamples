@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcViewsInjection", "MvcVie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcNinjectApplication", "MvcNinjectApplication\MvcNinjectApplication.csproj", "{C8A1FCF9-DEF0-4F76-8182-8F69C00F43F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcPagedGrid", "MvcPagedGrid\MvcPagedGrid.csproj", "{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -223,6 +225,16 @@ Global
 		{C8A1FCF9-DEF0-4F76-8182-8F69C00F43F6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C8A1FCF9-DEF0-4F76-8182-8F69C00F43F6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C8A1FCF9-DEF0-4F76-8182-8F69C00F43F6}.Release|x86.ActiveCfg = Release|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -244,6 +256,7 @@ Global
 		{73293EE1-6384-41C9-A0DB-73004A71D538} = {45353EC1-07C2-403F-917D-94EB2530229F}
 		{DFCE42DC-18DA-461D-9DB1-57A05A2E8AB7} = {45353EC1-07C2-403F-917D-94EB2530229F}
 		{C8A1FCF9-DEF0-4F76-8182-8F69C00F43F6} = {45353EC1-07C2-403F-917D-94EB2530229F}
+		{02C6BC07-D343-4FD5-BA3E-8269D64FDEA6} = {45353EC1-07C2-403F-917D-94EB2530229F}
 		{3CBD398E-992B-46AC-8596-6939F185DE10} = {3F3DFF78-9CB3-4E37-BA05-05D7CBCD3CFD}
 	EndGlobalSection
 EndGlobal
