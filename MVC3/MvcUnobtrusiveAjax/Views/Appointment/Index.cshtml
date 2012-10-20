@@ -1,0 +1,44 @@
+﻿@model string
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    AjaxOptions ajaxOpts = new AjaxOptions() 
+        { 
+            UpdateTargetId = "tabledata",
+            //Confirm = "Czy chcesz AJAX?"
+            //InsertionMode = InsertionMode.Replace, // this is default
+            LoadingElementId = "loading",
+            LoadingElementDuration = 1500,
+            Url = Url.Action("AppointmentData") // gracefull degradation
+        };
+}
+
+<h4>Appointment List</h4>
+
+<div id="loading" style="display:none; color:Red; font-weight: bold">
+    <p>Loading Data...</p>
+</div>
+
+<!-- było: Html.BeginForm() -->
+<!-- było: (Ajax.BeginForm("AppointmentData", ajaxOpts)) -->
+@using (Ajax.BeginForm(ajaxOpts))
+{
+    <table>
+        <thead>
+            <th>Client Name</th>
+            <th>Appointment Date</th>
+        </thead>
+
+        <tbody id="tabledata">
+            @Html.Action("AppointmentData", new { id = Model })
+        </tbody>
+
+    </table>
+    
+    <p>
+        @Html.DropDownList("id", new SelectList(new[] { "All", "Joe", "Jane", "Bob" }, (Model ?? "All")))
+        <input type="submit" value="Submit" />
+    </p>
+}
