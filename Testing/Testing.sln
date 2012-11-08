@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FakeItEasyTest1", "FakeItEasyTest1\FakeItEasyTest1.csproj", "{851602BE-C289-46D4-99FE-54D1314D178C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeItEasy1", "FakeItEasy1", "{449F6CEB-9C8C-41FA-B774-A53B1AE88531}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTarget", "TestTarget\TestTarget.csproj", "{F88AD474-8B2A-45C8-8316-69E98F0E91A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A51CE54B-FA74-4A75-B471-EBF99C6351C0}"
+	ProjectSection(SolutionItems) = preProject
+		Unit_tests.txt = Unit_tests.txt
+		UnitTestsIntro.txt = UnitTestsIntro.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{851602BE-C289-46D4-99FE-54D1314D178C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{851602BE-C289-46D4-99FE-54D1314D178C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{851602BE-C289-46D4-99FE-54D1314D178C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{851602BE-C289-46D4-99FE-54D1314D178C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F88AD474-8B2A-45C8-8316-69E98F0E91A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F88AD474-8B2A-45C8-8316-69E98F0E91A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F88AD474-8B2A-45C8-8316-69E98F0E91A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F88AD474-8B2A-45C8-8316-69E98F0E91A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{851602BE-C289-46D4-99FE-54D1314D178C} = {449F6CEB-9C8C-41FA-B774-A53B1AE88531}
+		{F88AD474-8B2A-45C8-8316-69E98F0E91A1} = {449F6CEB-9C8C-41FA-B774-A53B1AE88531}
+	EndGlobalSection
+EndGlobal

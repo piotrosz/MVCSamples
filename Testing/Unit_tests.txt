@@ -1,0 +1,88 @@
+1. XUnit.Net (http://xunit.codeplex.com/)
+	- [Fact]
+	- test runner
+	- how to debug
+
+2. Structuring tests (http://haacked.com/archive/2012/01/02/structuring-unit-tests.aspx)
+	
+using Xunit;
+
+public class TitleizerFacts
+{
+    public class TheTitleizerMethod
+    {
+        [Fact]
+        public void returns_default_title_for_null_name()
+        {
+            // Test code
+        }
+
+        [Fact]
+        public void appends_title_to_name()
+        {
+            // Test code
+        }
+    }
+
+    public class TheKnightifyMethod
+    {
+        [Fact]
+        public void ReturnsDefaultTitleForNullName()
+        {
+            // Test code
+        }
+
+        [Fact]
+        public void AppendsSirToMaleNames()
+        {
+            // Test code
+        }
+
+        [Fact]
+        public void AppendsDameToFemaleNames()
+        {
+            // Test code
+        }
+    }
+}
+	
+3. Naming conventions
+
+Method name describes single behaviour
+_
+
+5. 3A
+
+Arrange, act, assert
+
+- Arrange: Get the environment ready.
+- Act: Call the method under test.
+- Assert: Ensure that what you expected to happen, happened.
+
+[Fact]
+public void popping_returns_last_pushed_item_from_stack()
+{
+   // Arrange
+   var stack = new Stack<string>();
+   string value = "Hello, World!";
+   stack.Push(value);
+   
+   // Act
+   string result = stack.Pop();
+   
+   // Assert
+   Assert.Equal(value, result);
+}
+
+6. Good practices
+
+- Testing small pieces of code (units) - usually single method, one should quickly understand the test
+- Testing in isolation from the rest of production code - understand how your component works, how will interact with other components
+- Testing only public endpoints 
+- Running the test gets test pass/fail
+- Single assertion rule - test should test single behaviour (it doesn't mean that there should be only one Assert.)
+- Test only the code you write
+
+7. FakeItEasy (Install-Package FakeItEasy, https://github.com/FakeItEasy/FakeItEasy/wiki)
+
+
