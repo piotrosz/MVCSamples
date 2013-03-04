@@ -1,11 +1,9 @@
-﻿using MvcNLog.Infrastructure.Logging;
-using Ninject;
-using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcNLog.Infrastructure.Logging;
 
 namespace MvcNLog.Infrastructure.Filters
 {
@@ -13,24 +11,26 @@ namespace MvcNLog.Infrastructure.Filters
     {
         private readonly IExceptionLogger logger;
 
-        public CustomHandleErrorAttribute(IExceptionLogger logger) 
+        public CustomHandleErrorAttribute(IExceptionLogger logger)
         {
             this.logger = logger;
         }
 
         public override void OnException(ExceptionContext filterContext)
         {
-            if (filterContext.ExceptionHandled || !filterContext.HttpContext.IsCustomErrorEnabled)
-            {
-                return;
-            }
-
             if (new HttpException(null, filterContext.Exception).GetHttpCode() != 500)
             {
-                return;
+                return; // This will be handled in Global.asax
             }
 
             if (!ExceptionType.IsInstanceOfType(filterContext.Exception))
+            {
+                return; // Only Exceptions
+            }
+
+            logger.Log(filterContext);
+
+            if (filterContext.ExceptionHandled || !filterContext.HttpContext.IsCustomErrorEnabled)
             {
                 return;
             }
@@ -38,39 +38,45 @@ namespace MvcNLog.Infrastructure.Filters
             // if the request is AJAX return JSON else view.
             if (filterContext.HttpContext.Request.Headers["X-Requested-With"] == "XMLHttpRequest")
             {
-                filterContext.Result = new JsonResult
-                {
-                    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-                    Data = new
-                    {
-                        error = true,
-                        message = filterContext.Exception.Message
-                    }
-                };
+                ReturnJsonError(filterContext);
             }
             else
             {
-                var controllerName = (string)filterContext.RouteData.Values["controller"];
-                var actionName = (string)filterContext.RouteData.Values["action"];
-                var model = new HandleErrorInfo(filterContext.Exception, controllerName, actionName);
-
-                filterContext.Result = new ViewResult
-                {
-                    ViewName = View,
-                    MasterName = Master,
-                    ViewData = new ViewDataDictionary<HandleErrorInfo>(model),
-                    TempData = filterContext.Controller.TempData
-                };
+                ReturnViewError(filterContext);
             }
-
-            // log the error using NLog
-            logger.ErrorException("Exception caught", filterContext.Exception);
 
             filterContext.ExceptionHandled = true;
             filterContext.HttpContext.Response.Clear();
             filterContext.HttpContext.Response.StatusCode = 500;
-
             filterContext.HttpContext.Response.TrySkipIisCustomErrors = true;
+        }
+
+        private void ReturnJsonError(ExceptionContext filterContext)
+        {
+            filterContext.Result = new JsonResult
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = new
+                {
+                    error = true,
+                    message = filterContext.Exception.Message
+                }
+            };
+        }
+
+        private void ReturnViewError(ExceptionContext filterContext)
+        {
+            var controllerName = (string)filterContext.RouteData.Values["controller"];
+            var actionName = (string)filterContext.RouteData.Values["action"];
+            var model = new HandleErrorInfo(filterContext.Exception, controllerName, actionName);
+
+            filterContext.Result = new ViewResult
+            {
+                ViewName = View,
+                MasterName = Master,
+                ViewData = new ViewDataDictionary<HandleErrorInfo>(model),
+                TempData = filterContext.Controller.TempData
+            };
         }
     }
 }
