@@ -1,16 +1,14 @@
-﻿using MvcNLog.Controllers;
-using MvcNLog.Infrastructure.Filters;
-using MvcNLog.Infrastructure.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using MvcNLog.Infrastructure.Logging;
+using MvcNLog.Infrastructure.Filters;
+using MvcNLog.Controllers;
 
-namespace MvcNLog
+namespace ChaseExecutiveDashboard
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
     // visit http://go.microsoft.com/?LinkId=9394801
@@ -38,9 +36,6 @@ namespace MvcNLog
         {
             AreaRegistration.RegisterAllAreas();
 
-            // Use LocalDB for Entity Framework by default
-            Database.DefaultConnectionFactory = new SqlConnectionFactory(@"Data Source=(localdb)\v11.0; Integrated Security=True; MultipleActiveResultSets=True");
-
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
@@ -65,14 +60,25 @@ namespace MvcNLog
                 }
             }
 
-            var ex = Server.GetLastError();
+            var exception = Server.GetLastError();
+
+            DependencyResolver.Current.GetService<IExceptionLogger>().Log(exception, new HttpContextWrapper(httpContext));
+
+            if (httpContext.IsCustomErrorEnabled)
+            {
+                ShowCustomErrorPage(exception, httpContext, currentController, currentAction);
+            }
+        }
+
+        private void ShowCustomErrorPage(Exception exception, HttpContext httpContext, string currentController, string currentAction)
+        {
             var controller = new ErrorController();
             var routeData = new RouteData();
             var action = "Index";
 
-            if (ex is HttpException)
+            if (exception is HttpException)
             {
-                var httpEx = ex as HttpException;
+                var httpEx = exception as HttpException;
 
                 switch (httpEx.GetHttpCode())
                 {
@@ -86,13 +92,13 @@ namespace MvcNLog
 
             httpContext.ClearError();
             httpContext.Response.Clear();
-            httpContext.Response.StatusCode = ex is HttpException ? ((HttpException)ex).GetHttpCode() : 500;
+            httpContext.Response.StatusCode = exception is HttpException ? ((HttpException)exception).GetHttpCode() : 500;
             httpContext.Response.TrySkipIisCustomErrors = true;
 
             routeData.Values["controller"] = "Error";
             routeData.Values["action"] = action;
 
-            controller.ViewData.Model = new HandleErrorInfo(ex, currentController, currentAction);
+            controller.ViewData.Model = new HandleErrorInfo(exception, currentController, currentAction);
             ((IController)controller).Execute(new RequestContext(new HttpContextWrapper(httpContext), routeData));
         }
     }
