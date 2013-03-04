@@ -1,34 +1,100 @@
-﻿using NLog;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using NLog;
+using System.Web.Mvc;
+using System.Text;
+using System.Web.Routing;
+using System.Collections;
 
 namespace MvcNLog.Infrastructure.Logging
 {
     public class NLogExceptionLogger : IExceptionLogger
     {
+        private static readonly string loggerName = "exception";
         private Logger logger;
 
         public NLogExceptionLogger()
         {
-            //logger = LogManager.GetCurrentClassLogger();
-            logger = LogManager.GetLogger("exceptions");
+            logger = LogManager.GetLogger(loggerName);
         }
 
-        public void ErrorException(string message, Exception exception)
+        public void Log(ExceptionContext context)
         {
+            var logEvent = new LogEventInfo(LogLevel.Error, loggerName, context.Exception.Message);
 
-//            LogEventInfo theEvent = new LogEventInfo(LogLevel.Debug, "", "Pass my custom value");
-//            theEvent.Properties["MyValue"] = "My custom string";
+            PrepareExceptionInfo(logEvent, context.Exception);
+            PrepareRouteValuesInfo(logEvent, context.RouteData);
+            PrepareHttpContextInfo(logEvent, context.HttpContext);
 
-//            log.Log(theEvent);
-//            ...
-//            and in your NLog.config file:
+            if (context.RequestContext != null && context.RequestContext.HttpContext != null)
+            {
+                PrepareRequestInfo(logEvent, context.RequestContext.HttpContext.Request);
+            }
 
-//${event-context:item=MyValue} -- renders "My custom string"
+            logger.Log(logEvent);
+        }
 
-            logger.ErrorException(message, exception);
+        public void Log(Exception exception, HttpContextBase httpContext)
+        {
+            var logEvent = new LogEventInfo(LogLevel.Error, loggerName, exception.Message);
+
+            PrepareExceptionInfo(logEvent, exception);
+            PrepareHttpContextInfo(logEvent, httpContext);
+
+            logger.Log(logEvent);
+        }
+
+        private void PrepareExceptionInfo(LogEventInfo logEvent, Exception exception)
+        {
+            if (exception == null)
+            {
+                return;
+            }
+
+            logEvent.Properties["exception"] = LogHelper.GetExceptionString(exception);
+        }
+
+        private void PrepareHttpContextInfo(LogEventInfo logEvent, HttpContextBase httpContext)
+        {
+            if (httpContext == null)
+            {
+                return;
+            }
+
+            logEvent.Properties["user"] = httpContext.User.Identity.Name;
+        }
+
+        private void PrepareRouteValuesInfo(LogEventInfo logEvent, RouteData routeData)
+        {
+            if (routeData == null)
+            {
+                return;
+            }
+
+            logEvent.Properties["controller"] = routeData.Values["controller"];
+            logEvent.Properties["action"] = routeData.Values["action"];
+
+            var routeValues = new StringBuilder();
+            foreach (var value in routeData.Values)
+            {
+                routeValues.AppendFormat("[{0}={1}]", value.Key, value.Value);
+            }
+
+            logEvent.Properties["routevalues"] = routeValues.ToString();
+        }
+
+        private void PrepareRequestInfo(LogEventInfo logEvent, HttpRequestBase request)
+        {
+            if (request == null)
+            {
+                return;
+            }
+
+            logEvent.Properties["browser"] = request.Browser.Browser + " " + request.Browser.Version;
+            logEvent.Properties["httpmethod"] = request.HttpMethod;
+            logEvent.Properties["rawurl"] = request.RawUrl;
         }
     }
 }

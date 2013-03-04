@@ -11,6 +11,8 @@
 <h3>Exception details</h3>
 <p>
     Controller: @Model.ControllerName <br />
-    Action: @Model.ActionName<br />
-    Exception: @Model.Exception
+    Action: @Model.ActionName<br /><br />
+	<span style="color:red">@Model.Exception.Message</span><br />
+	<br />
+    @Html.Raw(MvcNLog.Infrastructure.Logging.LogHelper.GetExceptionString(Model.Exception).Replace("\n", "<br/>"))
 </p>

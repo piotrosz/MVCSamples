@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Infrastructure\Filters\CustomHandleErrorAttribute.cs" />
     <Compile Include="Infrastructure\Logging\IExceptionLogger.cs" />
+    <Compile Include="Infrastructure\Logging\LogHelper.cs" />
     <Compile Include="Infrastructure\Logging\NLogExceptionLogger.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -195,7 +196,9 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -205,6 +208,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery.d.ts" />
+    <Content Include="Views\Error\NotFound.cshtml" />
     <TypeScriptCompile Include="Scripts\site.ts" />
     <Content Include="Scripts\site.js">
       <DependentUpon>site.ts</DependentUpon>

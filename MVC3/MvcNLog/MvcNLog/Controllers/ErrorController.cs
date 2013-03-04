@@ -10,7 +10,7 @@ namespace MvcNLog.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View("Error");
         }
 
         public ActionResult NotFound()
